@@ -1,0 +1,27 @@
+{
+  "name": "soccermanagerbelite",
+  "version": "1.0.0",
+  "description": "A RESTful NodeJS API for a simple application where football/soccer fans will be able to create fantasy teams and will be able to buy or sell players",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dshadowexp/SoccerManagerBELite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dshadowexp/SoccerManagerBELite/issues"
+  },
+  "homepage": "https://github.com/dshadowexp/SoccerManagerBELite#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
