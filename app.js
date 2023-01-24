@@ -1,12 +1,20 @@
-import express from 'express';
+import express, { urlencoded, json } from 'express';
+import config from 'config';
+
+import dbConnect from './startup/db.js';
+import initializeRoutes from './api/routes.js';
 
 const app = express();
 
-app.use(express.json());
+app.use(json());
+app.use(urlencoded({ extended: true }));
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || config.get('port');
 
 app.listen(() => {
-    console.log(`listening at localhost:${port}`)
-});
+    console.log(`listening on localhost:${port}`);
 
+    dbConnect();
+
+    initializeRoutes(app);
+})
