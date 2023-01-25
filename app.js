@@ -10,12 +10,16 @@ const app = express();
 app.use(json())
 app.use(urlencoded({ extended: true }))
 
-const port = process.env.PORT || config.get('port');
+app.get('/', (req, res) => {
+    res.send('Welcome to Soccer Manager BELite')
+})
 
-app.listen(() => {
-    console.log(`listening on localhost:${port}`);
+const PORT = process.env.PORT || config.get('port');
+
+app.listen(PORT, () => {
+    console.log(`listening on http://localhost:${PORT}...`);
 
     dbConnect();
     initializeRoutes(app);
-    swaggerDocs(app, port);
+    swaggerDocs(app, PORT);
 })
