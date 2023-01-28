@@ -2,5 +2,6 @@
     "port": 3000,
     "db": {
         "url": "mongodb://localhost/managerbelite"
-    }
+    },
+    "token": "x-auth-token"
 }

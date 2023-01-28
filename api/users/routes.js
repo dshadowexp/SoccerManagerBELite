@@ -1,30 +1,7 @@
 import { Router } from 'express';
-import { createUserHandler, getUserHandler } from './controller.js';
+import { createUserHandler } from './controller.js';
 
 const router = Router();
-
-/**
- * 
- * @openapi
- * '/api/users':
- *  get:
- *     tags:
- *     - Users
- *     summary: Get registered user
- *     responses:
- *       200:
- *         description: Success
- *         content:
- *          application/json:
- *            schema:
- *              $ref: '#/components/schemas/CreateUserResponse'
- *       400:
- *         description: Bad Request
- *       501:
- *         description: Unauthorized
- *       
- */
-router.get('/', getUserHandler)
 
 /**
  * 

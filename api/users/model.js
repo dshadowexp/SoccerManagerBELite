@@ -1,4 +1,5 @@
 import Joi from "joi";
+import jwt from "jsonwebtoken";
 import { Schema, model } from "mongoose";
 
 /**
@@ -45,6 +46,10 @@ const userSchema = new Schema({
         maxlength: 1024
     }
 });
+
+userSchema.methods.generateAuthToken = function() {
+    return jwt.sign({ _id: this._id },  'secretKey');
+}
 
 const User = model('User', userSchema);
 
