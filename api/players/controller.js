@@ -3,15 +3,16 @@ import _ from "lodash";
 import { valiatePlayer } from "./model.js";
 import { validateObjectId } from './../utils.js';
 import { errorResponse, successResponse, validationResponse } from "../responses.js";
-import { getPlayerById, updatePlayer } from "./service.js";
+import { getPlayersByManagerId, getPlayerById, updatePlayer } from "./service.js";
 
 export const getPlayersHandler = async (req, res) => {
     let players = await getPlayersByManagerId(req.user._id);
+
     res.status(200).send(successResponse('Successful', players, 200));
 }
 
 export const updatePlayerHandler = async (req, res) => {
-    const id = req.param.id;
+    const id = req.params.id;
     if (!validateObjectId(id)) return res.status(400).send(errorResponse('Invalid request parameter', 400));
 
     const { error } = valiatePlayer(req.body);
@@ -20,9 +21,9 @@ export const updatePlayerHandler = async (req, res) => {
     let player = await getPlayerById(id);
     if (!player) return res.status(409).send(errorResponse('Player does not exist', 409));
 
-    if (player.managerId != req.user._id)
+    if (!player.managerId.equals(req.user._id))
         return res.status(403).send(errorResponse('Action unauthorized', 403));
 
-    player = await updatePlayer(_.pick(req.body, ['firstName', 'lastName', 'country']));
+    player = await updatePlayer(player._id, _.pick(req.body, ['firstName', 'lastName', 'country']));
     res.status(200).send(successResponse('Updated successfully', player, 200));
 }

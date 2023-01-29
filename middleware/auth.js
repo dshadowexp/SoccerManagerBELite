@@ -9,7 +9,7 @@ export const authenticationMiddleware = (req, res, next) => {
     if (!token) return res.status(401).send(errorResponse('Access denied, No token provided', 401));
 
     try {
-        const payload = jwt.verify(token, 'secret');
+        const payload = jwt.verify(token, 'secretKey');
         req.user = payload;
         next();
     } catch (ex) {

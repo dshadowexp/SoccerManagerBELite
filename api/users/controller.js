@@ -27,8 +27,6 @@ export const createUserHandler = async (req, res) => {
     } catch (error) {
         res.status(500).send(errorResponse(error.message, 500));
     }
-
-    
 }
 
 export const authenticateUser = async (req, res) => {

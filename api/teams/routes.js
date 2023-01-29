@@ -31,7 +31,7 @@ const router = Router()
  *       400:
  *         description: Bad request
  */
-router.post('/', authenticationMiddleware, getTeamHandler);
+router.get('/', authenticationMiddleware, getTeamHandler);
 
 /**
  * 
