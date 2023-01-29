@@ -22,3 +22,9 @@ export const hashPassword = async (password) => {
 export const validatePassword = async (password, hashedPassword) => {
     return compare(password, hashedPassword);
 }
+
+export const initializeUser = async (user) => {
+    let newUser = await createUser(user);
+
+    return newUser
+}

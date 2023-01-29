@@ -1,0 +1,23 @@
+import _ from "lodash";
+
+import { valiatePlayer } from "./model.js";
+import { validateObjectId } from './../utils.js';
+import { errorResponse, successResponse, validationResponse } from "../responses.js";
+import { getPlayerById, updatePlayer } from "./service.js";
+
+export const updatePlayerHandler = async (req, res) => {
+    const id = req.param.id;
+    if (!validateObjectId(id)) return res.status(400).send(errorResponse('Invalid request parameter', 400));
+
+    const { error } = valiatePlayer(req.body);
+    if (error) return res.status(400).send(validationResponse(error.details[0].message));
+
+    let player = await getPlayerById(id);
+    if (!player) return res.status(409).send(errorResponse('Player does not exist', 409));
+
+    if (player.managerId != req.user._id)
+        return res.status(403).send(errorResponse('Action unauthorized', 403));
+
+    player = await updatePlayer(_.pick(req.body, ['firstName', 'lastName', 'country']));
+    res.status(200).send(successResponse('Updated successfully', player, 200));
+}

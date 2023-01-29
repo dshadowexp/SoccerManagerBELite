@@ -2,7 +2,7 @@ import _ from "lodash";
 import config from "config";
 
 import { errorResponse, successResponse, validationResponse } from "../responses.js";
-import { createUser, findUserByEmail, validatePassword } from './service.js';
+import { initializeUser, findUserByEmail, validatePassword } from './service.js';
 import { validateUser } from "./model.js";
 
 export const createUserHandler = async (req, res) => {
@@ -12,7 +12,7 @@ export const createUserHandler = async (req, res) => {
     let user = await findUserByEmail(req.body.email);
     if (user) return res.status(409).send(errorResponse("User already exists", 409));
 
-    user = await createUser(_.pick(req.body, ['email', 'password']));
+    user = await initializeUser(_.pick(req.body, ['email', 'password']));
 
     const token = user.generateAuthToken();
 

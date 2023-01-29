@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import { Schema, model } from "mongoose";
 
 /**
+ * 
  * @openapi
  * components:
  *  schemas:
@@ -51,18 +52,13 @@ userSchema.methods.generateAuthToken = function() {
     return jwt.sign({ _id: this._id },  'secretKey');
 }
 
-const User = model('User', userSchema);
+export const User = model('User', userSchema);
 
-const validateUser = function(user) {
+export const validateUser = function(user) {
     const schema = Joi.object({
         email: Joi.string().email().required(),
         password: Joi.string().min(5).max(256).required()
     });
 
     return schema.validate(user);
-}
-
-export {
-    User,
-    validateUser
 }
