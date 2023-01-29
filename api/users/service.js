@@ -3,7 +3,7 @@ import { hash, compare, genSalt } from "bcrypt";
 
 import { positions } from "../utils.js";
 import { User } from "./model.js";
-import { createTeam } from './../teams/service.js';
+import { createTeam, updateTeam } from './../teams/service.js';
 import { createPlayer } from './../players/service.js';
 
 export const createUser = async (user, session) => {
@@ -18,11 +18,12 @@ export const findUserByEmail = async (userEmail) => {
 }   
 
 export const initializeUser = async (user) => {
-    const session = await startSession();
-    session.startTransaction();
-
     let newUser, newTeam, newPlayer;
+    let session;
     try {
+        session = await startSession();
+        session.startTransaction();
+
         newUser = await createUser(user, session);
 
         newTeam = await createTeam(newUser._id, session);
@@ -30,13 +31,17 @@ export const initializeUser = async (user) => {
         for (let position in positions) {
             let positionCount = positions[position];
             for (let i = 0; i < positionCount; i++) {
-                newPlayer = createPlayer({
+                newPlayer = await createPlayer({
                     position,
                     teamId: newTeam._id,
                     managerId: newUser._id,
                 }, session);
+
+                newTeam.value += newPlayer.marketValue;
             }
         }
+
+        await updateTeam(newTeam._id, newTeam, session);
 
         await session.commitTransaction();
     } catch (error) {

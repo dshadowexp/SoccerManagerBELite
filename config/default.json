@@ -1,7 +1,9 @@
 {
     "port": 3000,
     "db": {
-        "url": "mongodb://localhost/managerbelite"
+        "url": "mongodb://localhost/managerbelite",
+        "username": "dshadow_exp",
+        "password": "Amonia123"
     },
     "token": "x-auth-token"
 }

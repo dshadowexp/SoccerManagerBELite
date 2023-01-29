@@ -12,17 +12,23 @@ export const createUserHandler = async (req, res) => {
     let user = await findUserByEmail(req.body.email);
     if (user) return res.status(409).send(errorResponse("User already exists", 409));
 
-    user = await initializeUser(_.pick(req.body, ['email', 'password']));
+    try {
+        user = await initializeUser(_.pick(req.body, ['email', 'password']));
 
-    const token = user.generateAuthToken();
+        const token = user.generateAuthToken();
 
-    res.header(config.get('token'), token).status(201).send(
-        successResponse(
-            'Created', 
-            _.pick(user, ['_id', 'email']), 
-            201
-        )
-    );
+        res.header(config.get('token'), token).status(201).send(
+            successResponse(
+                'Created', 
+                _.pick(user, ['_id', 'email']), 
+                201
+            )
+        );
+    } catch (error) {
+        res.status(500).send(errorResponse(error.message, 500));
+    }
+
+    
 }
 
 export const authenticateUser = async (req, res) => {

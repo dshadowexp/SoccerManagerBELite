@@ -14,10 +14,13 @@ export const getTeamById = async (id) => {
     return await Team.findById(id);
 }
 
-export const updateTeam = async (_id, team) => {
+export const updateTeam = async (_id, team, session=null) => {
+    let options = { new: true, returnOriginal: false }
+    if (session) options.session = session;
+
     return await Team.findByIdAndUpdate(
         { _id },
         { $set: team },
-        { returnOriginal: false }
+        options,
     );
 }
