@@ -5,6 +5,11 @@ import { validateObjectId } from './../utils.js';
 import { errorResponse, successResponse, validationResponse } from "../responses.js";
 import { getPlayerById, updatePlayer } from "./service.js";
 
+export const getPlayersHandler = async (req, res) => {
+    let players = await getPlayersByManagerId(req.user._id);
+    res.status(200).send(successResponse('Successful', players, 200));
+}
+
 export const updatePlayerHandler = async (req, res) => {
     const id = req.param.id;
     if (!validateObjectId(id)) return res.status(400).send(errorResponse('Invalid request parameter', 400));

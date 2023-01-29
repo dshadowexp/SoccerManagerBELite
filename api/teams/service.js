@@ -1,6 +1,16 @@
 import { Team } from './model.js';
 
-export const getTeamWithId = async (id) => {
+export const createTeam = async (managerId, session) => {
+    let newTeam = new Team({ managerId });
+    await newTeam.save({ session });
+    return newTeam;
+}
+
+export const getTeamByMangerId = async (managerId) => {
+    return await Team.findOne({ managerId });
+}
+
+export const getTeamById = async (id) => {
     return await Team.findById(id);
 }
 

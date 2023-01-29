@@ -2,7 +2,12 @@ import _ from "lodash";
 
 import { validateTeam } from "./model.js";
 import { errorResponse, successResponse, validationResponse } from "../responses.js";
-import { updateTeam } from './service.js';
+import { getTeamByMangerId, updateTeam } from './service.js';
+
+export const getTeamHandler = async (req, res) => {
+    let team = await getTeamByMangerId(req.user._id);
+    res.status(200).send(successResponse('Success', team, 200));
+}
 
 export const updateTeamHandler = async (req, res) => {
     const id = req.params.id;
