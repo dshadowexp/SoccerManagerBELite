@@ -8,9 +8,10 @@
     "token": "x-auth-token",
     "email": {
         "sendgrid": {        
-            "apiKey": "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"
+            "apiKey": ""
         },
         "mailtrap": {
+            "host": "smtp.mailtrap.io",
             "username": "e59619bf3725ea",
             "password": "b0b2a9de12ec9e"
         }
