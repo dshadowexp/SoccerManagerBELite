@@ -45,18 +45,18 @@ export const buyFromTransfer = async (transfer, buyingManagerId) => {
 
         randomIncrement = (Math.floor(Math.random() * 100) + 10) / 100;
         playerOldMarketValue = player.marketValue;
-        console.log(playerOldMarketValue);
 
         player.teamId = newTeam._id;
         player.managerId = buyingManagerId;
         player.marketValue += (randomIncrement * player.marketValue);
+        
         await updatePlayer(player._id, player, session);
 
         oldTeam.budget += transfer.price;
         oldTeam.value -= playerOldMarketValue;
         newTeam.budget -= transfer.price;
         newTeam.value += player.marketValue;
-        console.log(oldTeam, newTeam);
+        
         await updateTeam(newTeam._id, newTeam, session);
         await updateTeam(oldTeam._id, oldTeam, session);
 

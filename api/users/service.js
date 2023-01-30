@@ -1,7 +1,7 @@
 import { startSession } from "mongoose";
 import { hash, compare, genSalt } from "bcrypt";
 
-import { positions } from "../utils.js";
+import { positions } from "../utils/index.js";
 import { User } from "./model.js";
 import { createTeam, updateTeam } from './../teams/service.js';
 import { createPlayer } from './../players/service.js';

@@ -1,8 +1,8 @@
 import _ from "lodash";
 
 import { valiatePlayer } from "./model.js";
-import { validateObjectId } from './../utils.js';
-import { errorResponse, successResponse, validationResponse } from "../responses.js";
+import { validateObjectId } from './../utils/index.js';
+import { errorResponse, successResponse, validationResponse } from "../utils/responses.js";
 import { getPlayersByManagerId, getPlayerById, updatePlayer } from "./service.js";
 
 export const getPlayersHandler = async (req, res) => {

@@ -1,8 +1,8 @@
 import jwt from 'jsonwebtoken';
 import config from 'config';
 
-import { errorResponse } from '../api/responses.js';
-import { validateObjectId } from "../api/utils.js";
+import { errorResponse } from '../api/utils/responses.js';
+import { validateObjectId } from "../api/utils/index.js";
 
 export const authenticationMiddleware = (req, res, next) => {
     const token = req.header(config.get('token'));
@@ -20,5 +20,4 @@ export const authenticationMiddleware = (req, res, next) => {
 export const authorizationMiddleware = (req, res, next) => {
     const id = req.params.id;
     if (!validateObjectId(id)) return res.status(400).send(errorResponse('Invalid request param', 400));
-
 }

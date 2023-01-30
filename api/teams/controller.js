@@ -1,9 +1,9 @@
 import _ from "lodash";
 
 import { validateTeam } from "./model.js";
-import { errorResponse, successResponse, validationResponse } from "../responses.js";
+import { errorResponse, successResponse, validationResponse } from "../utils/responses.js";
 import { getTeamByMangerId, getTeamById, updateTeam } from './service.js';
-import { validateObjectId } from "../utils.js";
+import { validateObjectId } from "../utils/index.js";
 
 export const getTeamHandler = async (req, res) => {
     let team = await getTeamByMangerId(req.user._id);

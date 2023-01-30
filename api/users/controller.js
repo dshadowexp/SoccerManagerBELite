@@ -1,7 +1,7 @@
 import _ from "lodash";
 import config from "config";
 
-import { errorResponse, successResponse, validationResponse } from "../responses.js";
+import { errorResponse, successResponse, validationResponse } from "../utils/responses.js";
 import { initializeUser, findUserByEmail, validatePassword } from './service.js';
 import { validateUser } from "./model.js";
 

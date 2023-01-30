@@ -1,10 +1,10 @@
 import _ from "lodash";
 
 import { validateTransfer } from "./model.js";
-import { successResponse, errorResponse, validationResponse } from './../responses.js';
+import { successResponse, errorResponse, validationResponse } from '../utils/responses.js';
 import { getPlayerById } from "../players/service.js";
 import { getTransferByPlayer, getTransferById, createTransfer, getAllTransfers, buyFromTransfer } from "./service.js";
-import { validateObjectId } from "../utils.js";
+import { validateObjectId } from "../utils/index.js";
 
 export const getAllTransfersHandler = async (req, res) => {
     const transfers = await getAllTransfers();
