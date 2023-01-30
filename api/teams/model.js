@@ -23,6 +23,9 @@ import Joi from "joi";
  *      required:
  *        - name
  *        - country
+ *        - value
+ *        - budget
+ *        - managerId
  *      properties:
  *        name:
  *          type: string
@@ -30,6 +33,16 @@ import Joi from "joi";
  *        country:
  *          type: string
  *          default: Spain
+ *        value:
+ *          type: integer
+ *          default: 19000000
+ *        budget:
+ *          type: integer
+ *          default: 5000000
+ *        managerId:
+ *          type: string
+ *          default: 123907ha7d8f7
+ *      
  */
 const teamSchema = new Schema({
     name: {

@@ -8,24 +8,19 @@ const router = Router()
 /**
  * 
  * @openapi
- * '/api/players':
+ * '/api/teams':
  *  get:
  *     tags:
- *     - Players
- *     summary: Register a user
- *     requestBody:
- *      required: true
- *      content:
- *        application/json:
- *           schema:
- *             $ref: '#/components/schemas/CreateUserInput'
+ *     - Teams
+ *     summary: Returns the team of a user
  *     responses:
  *       201:
  *         description: Created
  *         content:
  *          application/json:
  *            schema:
- *              $ref: '#/components/schemas/CreateUserResponse'
+ *              type: object
+ *              $ref: '#/components/schemas/UpdateTeamResponse'
  *       409:
  *         description: Conflict
  *       400:
@@ -36,24 +31,24 @@ router.get('/', authenticationMiddleware, getTeamHandler);
 /**
  * 
  * @openapi
- * '/api/players':
- *  get:
+ * '/api/teams':
+ *  post:
  *     tags:
- *     - Players
- *     summary: Register a user
+ *     - Teams
+ *     summary: Updates a team's name, country
  *     requestBody:
  *      required: true
  *      content:
  *        application/json:
  *           schema:
- *             $ref: '#/components/schemas/CreateUserInput'
+ *             $ref: '#/components/schemas/UpdateTeamInput'
  *     responses:
  *       201:
  *         description: Created
  *         content:
  *          application/json:
  *            schema:
- *              $ref: '#/components/schemas/CreateUserResponse'
+ *              $ref: '#/components/schemas/UpdateTeamResponse'
  *       409:
  *         description: Conflict
  *       400:

@@ -11,20 +11,16 @@ const router = Router();
  *  get:
  *     tags:
  *     - Players
- *     summary: Register a user
- *     requestBody:
- *      required: true
- *      content:
- *        application/json:
- *           schema:
- *             $ref: '#/components/schemas/CreateUserInput'
+ *     summary: Returns a list of players
  *     responses:
  *       201:
  *         description: Created
  *         content:
  *          application/json:
  *            schema:
- *              $ref: '#/components/schemas/CreateUserResponse'
+ *              type: array
+ *              items:
+ *                $ref: '#/components/schemas/UpdatePlayerResponse'
  *       409:
  *         description: Conflict
  *       400:
@@ -39,20 +35,20 @@ router.get('/', authenticationMiddleware, getPlayersHandler)
  *  post:
  *     tags:
  *     - Players
- *     summary: Register a user
+ *     summary: Updates a player's firstName, lastName, country
  *     requestBody:
  *      required: true
  *      content:
  *        application/json:
  *           schema:
- *             $ref: '#/components/schemas/CreateUserInput'
+ *             $ref: '#/components/schemas/UpdatePlayerInput'
  *     responses:
  *       201:
  *         description: Created
  *         content:
  *          application/json:
  *            schema:
- *              $ref: '#/components/schemas/CreateUserResponse'
+ *              $ref: '#/components/schemas/UpdatePlayerResponse'
  *       409:
  *         description: Conflict
  *       400:

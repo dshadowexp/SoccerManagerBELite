@@ -9,27 +9,55 @@ import Joi from 'joi';
  *    UpdatePlayerInput:
  *      type: object
  *      required:
- *        - name
+ *        - firstName
+ *        - lastName
  *        - country
  *      properties:
- *        name:
+ *        firstName:
  *          type: string
- *          default: FC Barcelona
+ *          default: Lionel
+ *        lastName:
+ *          type: string
+ *          default: Messi
  *        country:
  *          type: string
- *          default: Spain
+ *          default: Argentina
  *    UpdatePlayerResponse:
  *      type: object
  *      required:
- *        - name
+ *        - firstName
+ *        - lastName
  *        - country
+ *        - position
+ *        - age
+ *        - marketValue
+ *        - teamId
+ *        - manageId
  *      properties:
- *        name:
+ *        firstName:
  *          type: string
- *          default: FC Barcelona
+ *          default: Lionel
+ *        lastName:
+ *          type: string
+ *          default: Messi 
  *        country:
  *          type: string
- *          default: Spain
+ *          default: Argentina
+ *        position:
+ *          type: string
+ *          default: attacker
+ *        age:
+ *          type: integer
+ *          default: 25
+ *        marketValue:
+ *          type: integer
+ *          default: 1500000
+ *        teamId:
+ *          type: string
+ *          default: 123907ha7d8f7
+ *        manageId:
+ *          type: string
+ *          default: 387gh988bh8h9
  */
 const playerSchema = new Schema({
     firstName: {
