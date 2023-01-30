@@ -59,6 +59,6 @@ router.post('/', asyncErrorHandler(createUserHandler));
  *       400:
  *         description: Bad request
  */
-router.post('/auth', authenticateUser)
+router.post('/auth', asyncErrorHandler(authenticateUser));
 
 export default router;

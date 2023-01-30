@@ -4,6 +4,7 @@ import config from "config";
 import { errorResponse, successResponse, validationResponse } from "../utils/responses.js";
 import { initializeUser, findUserByEmail, validatePassword } from './service.js';
 import { validateUser } from "./model.js";
+import { sendMail } from "../utils/sendmail.js";
 
 export const createUserHandler = async (req, res) => {
     const { error } = validateUser(req.body);
@@ -36,6 +37,8 @@ export const authenticateUser = async (req, res) => {
     if (!validPassword) return res.status(404).send(errorResponse('Invalid email or password', 404));
 
     const token = user.generateAuthToken();
+
+    sendMail(req.body.email, 'email_template.ejs');
 
     res.status(200).send(
         successResponse(
