@@ -25,9 +25,7 @@ export const initializeUser = async (user) => {
         session.startTransaction();
 
         newUser = await createUser(user, session);
-
         newTeam = await createTeam(newUser._id, session);
-
         for (let position in positions) {
             let positionCount = positions[position];
             for (let i = 0; i < positionCount; i++) {
@@ -48,7 +46,7 @@ export const initializeUser = async (user) => {
         await session.abortTransaction();
         throw error;
     } finally {
-        session.endSession();
+        await session.endSession();
     }
 
     return newUser;

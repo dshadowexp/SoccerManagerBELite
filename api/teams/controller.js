@@ -23,7 +23,7 @@ export const updateTeamHandler = async (req, res) => {
     if (!team) return res.status(404).send(errorResponse('Team does not exist', 404));
 
     if (!team.managerId.equals(req.user._id))
-        return res.status(403).send(errorResponse('Action unauthorized', 403));
+        return res.status(403).send(errorResponse('Not authorized', 403));
 
     team = await updateTeam(team._id, _.pick(req.body, ['name', 'country']));
     res.status(200).send(successResponse('Updated successfully', team, 200));

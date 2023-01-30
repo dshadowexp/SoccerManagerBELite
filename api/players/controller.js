@@ -6,8 +6,7 @@ import { errorResponse, successResponse, validationResponse } from "../responses
 import { getPlayersByManagerId, getPlayerById, updatePlayer } from "./service.js";
 
 export const getPlayersHandler = async (req, res) => {
-    let players = await getPlayersByManagerId(req.user._id);
-
+    const players = await getPlayersByManagerId(req.user._id);
     res.status(200).send(successResponse('Successful', players, 200));
 }
 

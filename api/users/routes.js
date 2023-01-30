@@ -1,4 +1,6 @@
 import { Router } from 'express';
+
+import asyncErrorHandler from './../../middleware/async.js';
 import { createUserHandler } from './controller.js';
 
 const router = Router();
@@ -29,6 +31,6 @@ const router = Router();
  *       400:
  *         description: Bad request
  */
-router.post('/', createUserHandler)
+router.post('/', asyncErrorHandler(createUserHandler));
 
 export default router;

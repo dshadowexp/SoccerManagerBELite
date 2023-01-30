@@ -23,8 +23,8 @@ A RESTful NodeJS API for a simple application where football/soccer fans will be
   - _Age_ (random number from 18 to 40) and _market value_
 
 - A team owner can set the player on a transfer list
-- When a user places a player on a transfer list, they must set the asking price/value for this player. This value show be list on a market list. When another user/team buys this player, they must be bought for this price.
+- When a user places a player on a transfer list, they must set the asking price/value for this player. This value show be listed on a market list. When another user/team buys this player, they must be bought for this price.
 - Each user can see all the players on a transfer list.
 - With each transfer, team budgets are updated.
-- When a player is transferred to anothe rteam, their vlaue should be increased between 10 and 100 percent. This is a randomly chosen factor.
+- When a player is transferred to another team, their value should be increased between 10 and 100 percent. This is a randomly chosen factor.
 - All user actions are performed via RESTful API, including authentication

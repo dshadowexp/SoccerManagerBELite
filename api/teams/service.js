@@ -1,4 +1,5 @@
 import { Team } from './model.js';
+import { getPlayersByTeamId } from '../players/service.js';
 
 export const createTeam = async (managerId, session) => {
     let newTeam = new Team({ managerId });
@@ -23,4 +24,9 @@ export const updateTeam = async (_id, team, session=null) => {
         { $set: team },
         options,
     );
+}
+
+export const sumPlayersValue = async (teamId) => {
+    const players = await getPlayersByTeamId(teamId);
+    return players.reduce((player, currentValue) => player.marketValue + currentValue, 0);
 }
