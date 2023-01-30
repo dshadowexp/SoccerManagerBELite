@@ -8,8 +8,8 @@ import nodemailer from "nodemailer";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const transport = nodemailer.createTransport({
-  host: "smtp.mailtrap.io",
-  port: 2525,
+  host: config.get('email.mailtrap.host'),
+  port: config.get('email.mailtrap.port'),
   auth: {
     user: config.get('email.mailtrap.username'),
     pass: config.get('email.mailtrap.password')
