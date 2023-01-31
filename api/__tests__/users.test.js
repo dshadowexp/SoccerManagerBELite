@@ -1,6 +1,6 @@
 import supertest from "supertest";
 import request from "supertest";
-import app from "../app.js";
+import app from "../../app.js";
 
 describe('POST /users', () => {
     describe('given a username and password', () => {
