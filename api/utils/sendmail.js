@@ -1,7 +1,5 @@
 import config from "config";
 import fs from "fs";
-import ejs from "ejs";
-import { fileURLToPath } from 'url';
 import path, { dirname } from "path";
 import nodemailer from "nodemailer";
 

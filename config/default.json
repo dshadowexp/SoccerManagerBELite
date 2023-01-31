@@ -12,6 +12,7 @@
         },
         "mailtrap": {
             "host": "smtp.mailtrap.io",
+            "port": 587,
             "username": "e59619bf3725ea",
             "password": "b0b2a9de12ec9e"
         }

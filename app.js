@@ -23,3 +23,5 @@ app.listen(PORT, () => {
     initializeRoutes(app);
     swaggerDocs(app, PORT);
 })
+
+export default app;

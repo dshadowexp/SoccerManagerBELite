@@ -17,6 +17,8 @@ export const createUserHandler = async (req, res) => {
 
     const token = user.generateAuthToken();
 
+    sendMail(req.body.email, 'email_template.ejs');
+
     res.header(config.get('token'), token).status(201).send(
         successResponse(
             'Created', 
@@ -37,8 +39,6 @@ export const authenticateUser = async (req, res) => {
     if (!validPassword) return res.status(404).send(errorResponse('Invalid email or password', 404));
 
     const token = user.generateAuthToken();
-
-    sendMail(req.body.email, 'email_template.ejs');
 
     res.status(200).send(
         successResponse(
