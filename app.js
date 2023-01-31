@@ -1,29 +1,16 @@
-import express, { json, urlencoded } from 'express';
 import config from 'config';
-import helmet from 'helmet';
 
+import createServer from "./startup/server.js";
 import dbConnect from './startup/db.js';
-import initializeRoutes from './api/routes.js';
 import swaggerDocs from './startup/swagger.js';
 
-const app = express();
-
-app.use(helmet());
-app.use(json());
-app.use(urlencoded({ extended: true }));
-
-app.get('/', (req, res) => {
-    res.send('Welcome to Soccer Manager BELite')
-})
-
+const app = createServer();
 const PORT = process.env.PORT || config.get('port');
 
 app.listen(PORT, () => {
     console.log(`listening on http://localhost:${PORT}...`);
 
     dbConnect();
-    initializeRoutes(app);
+    
     swaggerDocs(app, PORT);
 })
-
-export default app;

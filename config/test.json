@@ -1,0 +1,20 @@
+{
+    "port": 3000,
+    "db": {
+        "url": "mongodb://localhost/managerbelite",
+        "username": "dshadow_exp",
+        "password": "Amonia123"
+    },
+    "token": "x-auth-token",
+    "email": {
+        "sendgrid": {        
+            "apiKey": ""
+        },
+        "mailtrap": {
+            "host": "smtp.mailtrap.io",
+            "port": 587,
+            "username": "e59619bf3725ea",
+            "password": "b0b2a9de12ec9e"
+        }
+    }
+}
