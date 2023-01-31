@@ -1,5 +1,6 @@
 import express, { json, urlencoded } from 'express';
 import config from 'config';
+import helmet from 'helmet';
 
 import dbConnect from './startup/db.js';
 import initializeRoutes from './api/routes.js';
@@ -7,8 +8,9 @@ import swaggerDocs from './startup/swagger.js';
 
 const app = express();
 
-app.use(json())
-app.use(urlencoded({ extended: true }))
+app.use(helmet());
+app.use(json());
+app.use(urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
     res.send('Welcome to Soccer Manager BELite')
