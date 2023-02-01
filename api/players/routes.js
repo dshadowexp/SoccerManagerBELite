@@ -32,7 +32,7 @@ router.get('/', authenticationMiddleware, getPlayersHandler)
  * 
  * @openapi
  * '/api/players':
- *  post:
+ *  put:
  *     tags:
  *     - Players
  *     summary: Updates a player's firstName, lastName, country
@@ -54,6 +54,6 @@ router.get('/', authenticationMiddleware, getPlayersHandler)
  *       400:
  *         description: Bad request
  */
-router.post('/:id', authenticationMiddleware, updatePlayerHandler)
+router.put('/:id', authenticationMiddleware, updatePlayerHandler)
 
 export default router;

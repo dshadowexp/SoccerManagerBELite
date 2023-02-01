@@ -4,8 +4,6 @@ import { fileURLToPath } from "url";
 import path, { dirname } from "path";
 import nodemailer from "nodemailer";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
 const transport = nodemailer.createTransport({
   host: config.get('email.mailtrap.host'),
   port: config.get('email.mailtrap.port'),
@@ -16,6 +14,7 @@ const transport = nodemailer.createTransport({
 });
 
 export const sendMail = (receiverEmail, templateName=null) => {
+    const __dirname = ""//dirname(fileURLToPath(import.meta.url));
     const templatePath = path.resolve(__dirname, templateName);
     const template = fs.readFileSync(templatePath, 'utf-8');
 

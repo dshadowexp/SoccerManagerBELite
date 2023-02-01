@@ -32,7 +32,7 @@ router.get('/', authenticationMiddleware, getTeamHandler);
  * 
  * @openapi
  * '/api/teams':
- *  post:
+ *  put:
  *     tags:
  *     - Teams
  *     summary: Updates a team's name, country
@@ -54,6 +54,6 @@ router.get('/', authenticationMiddleware, getTeamHandler);
  *       400:
  *         description: Bad request
  */
-router.post('/:id', authenticationMiddleware, updateTeamHandler);
+router.put('/:id', authenticationMiddleware, updateTeamHandler);
 
 export default router;

@@ -1,4 +1,4 @@
-import { request } from 'supertest';
+import request from 'supertest';
 import createServer from "../../startup/server.js";
 
 const app = createServer();
@@ -10,10 +10,11 @@ describe('user', () => {
             // should response with json object containing the user id
             // should respond with a 200 status code
             it("should respond with a 200 status code", async () => {
-                // const response = await (await request(app).post('/users')).send({
-                //     email: "sam@gmail.com",
-                //     password: "12345"
-                // })
+                const data = {
+                    email: "sam@gmail.com",
+                    password: "12345"
+                }
+                const response = await request(app).post('/users').send(data);
                 // expect(response.statusCode).toBe(201);
                 expect(true).toBe(true);
             })
