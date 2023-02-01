@@ -1,9 +1,13 @@
 import request from 'supertest';
-import createServer from "../../startup/server.js";
+import createServer from "../../../startup/server.js";
 
 const app = createServer();
 
-describe('user', () => {
+describe('User', () => {
+    beforeEach(() => {})
+    afterEach(() => {
+
+    })
     describe('POST /users', () => {
         describe('given a username and password', () => {
             // should sasve the username and password to the database
